@@ -10,8 +10,9 @@ class PaypalUtil{
    public function fetch_token(string $url,string $authorization) {
 $curl = curl_init();
 
+$api_url=$url."/v1/oauth2/token";
 curl_setopt_array($curl, array(
-  CURLOPT_URL => $url,
+  CURLOPT_URL => $api_url,
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
