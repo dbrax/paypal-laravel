@@ -5,4 +5,12 @@
  */
 return [
 
+    "sandbox_endpoint"=>"https://api-m.sandbox.paypal.com",
+
+    "live_endpoint"=>"https://api-m.paypal.com",
+
+    "client_id"=>env("PAYPAL_CLIENT_ID"),
+
+    "client_id"=>env("PAYPAL_CLIENT_SECRET")
+
 ];

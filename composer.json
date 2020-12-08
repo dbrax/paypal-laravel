@@ -5,7 +5,7 @@
         "epmnzava",
         "paypal-laravel"
     ],
-    "homepage": "https://github.com/epmnzava/paypal-laravel",
+    "homepage": "https://github.com/dbrax/paypal-laravel",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -15,14 +15,7 @@
             "role": "Developer"
         }
     ],
-    "require": {
-        "php": "^7.1",
-        "illuminate/support": "^6.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^8.0"
-    },
+    
     "autoload": {
         "psr-4": {
             "Epmnzava\\PaypalLaravel\\": "src"
@@ -50,5 +43,9 @@
                 "PaypalLaravel": "Epmnzava\\PaypalLaravel\\PaypalLaravelFacade"
             }
         }
+    },
+    "require": {
+        "php": "^7.1",
+         "illuminate/support": "^6.0|^7.0|^8.0"
     }
 }

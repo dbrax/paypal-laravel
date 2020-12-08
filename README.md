@@ -1,11 +1,12 @@
-# Very short description of the package
+# Paypal Intergration With Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/epmnzava/paypal-laravel.svg?style=flat-square)](https://packagist.org/packages/epmnzava/paypal-laravel)
+
 [![Build Status](https://img.shields.io/travis/epmnzava/paypal-laravel/master.svg?style=flat-square)](https://travis-ci.org/epmnzava/paypal-laravel)
-[![Quality Score](https://img.shields.io/scrutinizer/g/epmnzava/paypal-laravel.svg?style=flat-square)](https://scrutinizer-ci.com/g/epmnzava/paypal-laravel)
+
 [![Total Downloads](https://img.shields.io/packagist/dt/epmnzava/paypal-laravel.svg?style=flat-square)](https://packagist.org/packages/epmnzava/paypal-laravel)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package is meant to help laravel developers to easily integrate their web application or web service with paypal
 
 ## Installation
 
