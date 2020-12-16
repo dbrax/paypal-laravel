@@ -81,11 +81,14 @@ public function getCreateOrder($url,$token,$reference_id,$currency_code,$amount)
   $headers[] = 'Authorization: Bearer '.$token;
   curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   
-  $result = curl_exec($ch);
+  $response = curl_exec($ch);
   if (curl_errno($ch)) {
       echo 'Error:' . curl_error($ch);
   }
   curl_close($ch);
+
+return $response;
+
 }
 public function getFromPaypal($url,$token){
 
