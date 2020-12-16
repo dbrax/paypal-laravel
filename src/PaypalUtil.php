@@ -85,8 +85,6 @@ public function getFromPaypal($url,$token){
     CURLOPT_HTTPHEADER => array(
       "authorization: Bearer ".$token,
       "cache-control: no-cache",
-      "content-type: application/x-www-form-urlencoded",
-      "postman-token: d99b34bb-eaea-7fd5-945e-62851bb14cb8"
     ),
   ));
   
