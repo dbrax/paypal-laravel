@@ -45,6 +45,8 @@ class PaypalLaravel
 
 
    public function generate_invoice_number(){
+
+    $this->getAccessToken();
     $response=null;
 
     if(config("paypal-laravel.environment")=="test"){
