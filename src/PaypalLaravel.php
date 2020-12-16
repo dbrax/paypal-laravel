@@ -95,12 +95,72 @@ class PaypalLaravel
     }
 
 
+   /**
+    * POST 
+    *
+    *  /v2/checkout/orders 
+    */
+
+     public function createOrder($reference_id,$amount,$items=[]){
+        $this->getAccessToken();
+
+        $response=null;
+    
+
+        $post_array=$this->create_purchase_units($reference_id,$amount,$items);
 
 
+        if(config("paypal-laravel.environment")=="test"){
+            $api=new PaypalUtil();
+            $response=$api->getCreateOrder(config("paypal-laravel.sandbox_endpoint")."/v2/checkout/orders",$this->token,$post_array);
+            }
+           else{
+            $api=new PaypalUtil();
+            $response=$api->getCreateOrder(config("paypal-laravel.live_endpoint")."/v2/checkout/orders",$this->token,$post_array);
+             }
+    
+
+        
+
+        echo $response;
 
 
+     }
 
 
+public function create_purchase_units($reference_id,$amount,$items){
+    return array(
+        'intent' => 'CAPTURE',
+        'application_context' =>
+            array(
+                
+                'return_url' => config('paypal-laravel.return_url'),
+                'cancel_url' => config('paypal-laravel.cancel_url'),
+                'brand_name' => config('paypal-laravel.org_name'),
+                'locale' => 'en-US',
+                'landing_page' => 'BILLING',
+                'shipping_preference' => 'SET_PROVIDED_ADDRESS',
+                'user_action' => 'PAY_NOW',
+            ),
+        'purchase_units' =>
+            array(
+                0 =>
+                    array(
+                        'reference_id' => $reference_id,
+                        
+                          'amount' =>
+                            array(
+                                'currency_code' => config("paypal-laravel.currency_code"),
+                                'value' => $amount
+                                   
+                            ),
+                      
+                     
+                    ),
+            ),
+    );
+
+}
 
     
 }
