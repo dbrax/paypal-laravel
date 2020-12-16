@@ -44,7 +44,7 @@ class PaypalLaravel
    */
 
 
-   public function generate_invoice_number(){
+   public function generateInvoiceNumber(){
 
     $this->getAccessToken();
     $response=null;
