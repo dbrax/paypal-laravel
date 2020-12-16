@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Author: Emmanuel Mnzava
+ * Email: epmnzava@gmail.com
+ */
 namespace Epmnzava\PaypalLaravel;
 use Epmnzava\PaypalLaravel\OAuth\OAuthConsumer;
 use Epmnzava\PaypalLaravel\OAuth\OAuthRequest;
@@ -78,11 +81,11 @@ class PaypalLaravel
     
         if(config("paypal-laravel.environment")=="test"){
             $api=new PaypalUtil();
-            $response=$api->getFromPaypal(config("paypal-laravel.sandbox_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+            $response=$api->getFromPaypal(config("paypal-laravel.sandbox_endpoint")."/v2/invoicing/invoices",$this->token);
             }
            else{
             $api=new PaypalUtil();
-            $response=$api->getFromPaypal(config("paypal-laravel.live_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+            $response=$api->getFromPaypal(config("paypal-laravel.live_endpoint")."/v2/invoicing/invoices",$this->token);
              }
     
 
