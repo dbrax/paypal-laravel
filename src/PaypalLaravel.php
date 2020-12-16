@@ -121,8 +121,21 @@ class PaypalLaravel
 
         
 
-        return  $response;
+     $this->readLink(json_decode($response)->links[0]);
 
+
+     }
+
+
+     public function readLink($link){
+
+        $response=null;
+    
+
+        $api=new PaypalUtil();
+        $response=$api->getFromPaypal($link,$this->token);
+
+       echo $response;
 
      }
 
