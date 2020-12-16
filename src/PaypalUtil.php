@@ -68,32 +68,24 @@ public function generate_invoice(string $url,string $token){
 
 }
 
-public function getCreateOrder($url,$token,$post_array){
-  $curl = curl_init();
-  $post_array= json_encode($post_array);
-  $api_url=$url;
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => $api_url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "grant_type=client_credentials,".$post_array,
-    CURLOPT_HTTPHEADER => array(
-      "authorization: Bearer ".$token,
-      "cache-control: no-cache",
-      "content-type: application/x-www-form-urlencoded",
-    ),
-  ));
+public function getCreateOrder($url,$token,$reference_id,$currency_code,$amount){
+  $ch = curl_init();
+
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n  \"intent\": \"CAPTURE\",\n  \"purchase_units\": [\n    {\n      \"reference_id\":\"$reference_id\",  \n      \"amount\": {\n        \"currency_code\": \"$currency_code\",\n        \"value\": \"$amount\"\n      }\n    }\n  ]\n}");
   
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
+  $headers = array();
+  $headers[] = 'Content-Type: application/json';
+  $headers[] = 'Authorization: Bearer '.$token;
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   
-  curl_close($curl);
-  
-  return $response;
+  $result = curl_exec($ch);
+  if (curl_errno($ch)) {
+      echo 'Error:' . curl_error($ch);
+  }
+  curl_close($ch);
 }
 public function getFromPaypal($url,$token){
 
