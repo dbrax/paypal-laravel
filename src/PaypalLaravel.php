@@ -66,7 +66,30 @@ class PaypalLaravel
    }
 
 
+   /**
+    *  GET
+    * /v2/invoicing/invoices
+    */
 
+
+    public function listInvoices(){
+        $this->getAccessToken();
+        $response=null;
+    
+        if(config("paypal-laravel.environment")=="test"){
+            $api=new PaypalUtil();
+            $response=$api->getFromPaypal(config("paypal-laravel.sandbox_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+            }
+           else{
+            $api=new PaypalUtil();
+            $response=$api->getFromPaypal(config("paypal-laravel.live_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+             }
+    
+
+        
+
+        echo $response;
+    }
 
 
 
