@@ -10,6 +10,8 @@ class PaypalLaravel
 {
     // Build your next great package.
 
+    private string $token;
+
 
 
     public function getAccessToken(){
@@ -28,12 +30,38 @@ class PaypalLaravel
          }
 
 
-         echo $response;
+         $this->token= json_decode($response)->access_token;
 
 
 
         
     }
+
+  /**
+   *  POST
+   * /v2/invoicing/generate-next-invoice-number
+
+   */
+
+
+   public function generate_invoice_number(){
+    $response=null;
+
+    if(config("paypal-laravel.environment")=="test"){
+        $api=new PaypalUtil();
+        $response=$api->generate_invoice(config("paypal-laravel.sandbox_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+        }
+       else{
+        $api=new PaypalUtil();
+        $response=$api->generate_invoice(config("paypal-laravel.live_endpoint")."/v2/invoicing/generate-next-invoice-number",$this->token);
+         }
+
+
+         echo $response;
+
+
+
+   }
 
 
 
