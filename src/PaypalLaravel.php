@@ -118,9 +118,11 @@ class PaypalLaravel
             $response=$api->getCreateOrder(config("paypal-laravel.live_endpoint")."/v2/checkout/orders",$this->token,$reference_id,config("paypal-laravel.currency_code"),$amount);
              }
     
-
-        
-             return $response;
+             $order_id=json_decode($response)->id;
+             $order_links=json_decode($response)->links;
+             $checkout_link=$order_links[1]->href;
+$response_array=["order_id"=>$order_id,"checkout_link"=>$checkout_link];
+             return $response_array;
 
     /// $this->readLink(json_decode($response)->links[0]);
 
