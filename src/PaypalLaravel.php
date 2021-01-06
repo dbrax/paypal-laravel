@@ -101,7 +101,7 @@ class PaypalLaravel
     *  /v2/checkout/orders 
     */
 
-     public function createOrder($reference_id,$amount,$items=[]){
+     public function createOrder($amount,$items=[]){
         $this->getAccessToken();
 
         $response=null;
