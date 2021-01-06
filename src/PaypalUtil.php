@@ -68,7 +68,7 @@ public function generate_invoice(string $url,string $token){
 
 }
 
-public function getCreateOrder($url,$token,$reference_id,$currency_code,$amount){
+public function getCreateOrder($url,$token,$currency_code,$amount){
   $ch = curl_init();
 
   curl_setopt($ch, CURLOPT_URL, $url);
