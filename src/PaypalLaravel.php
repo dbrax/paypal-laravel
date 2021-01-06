@@ -129,6 +129,7 @@ class PaypalLaravel
 
 
      public function readLink($link){
+        $this->getAccessToken();
 
         $response=null;
     

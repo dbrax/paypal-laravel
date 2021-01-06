@@ -1,0 +1,22 @@
+curl -v -X POST https://api.sandbox.paypal.com/v2/checkout/orders \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer A21AAJlmYM0opi8v7l3lUR9AJXv3VbSx-QVPMkW8QUk4wy6_gSyJ964TBR7aLHkGzFvj9y1ziiAN_ZMRBbaK4pOeFG38nOHJA" \
+-d '{
+  "intent": "CAPTURE",
+
+   "payer":{
+      "name":"Emmanuel mnzava",
+      "email_address":"epmnzava@gmail.com",
+      "phone":"255679079774"
+
+   },
+  "purchase_units": [
+        {
+      "reference_id":"34343F3DF",  
+      "amount": {
+        "currency_code": "USD",
+        "value": "100.00"
+      }
+    }
+  ]
+}'
