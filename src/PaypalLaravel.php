@@ -101,7 +101,7 @@ class PaypalLaravel
     *  /v2/checkout/orders 
     */
 
-     public function createOrder($amount,$items=[]){
+     public function createOrder($reference_id,$amount,$items=[]){
         $this->getAccessToken();
 
         $response=null;
@@ -111,11 +111,11 @@ class PaypalLaravel
 
         if(config("paypal-laravel.environment")=="test"){
             $api=new PaypalUtil();
-            $response=$api->getCreateOrder(config("paypal-laravel.sandbox_endpoint")."/v2/checkout/orders",$this->token,config("paypal-laravel.currency_code"),$amount);
+            $response=$api->getCreateOrder(config("paypal-laravel.sandbox_endpoint")."/v2/checkout/orders",$this->token,$reference_id,config("paypal-laravel.currency_code"),$amount);
             }
            else{
             $api=new PaypalUtil();
-            $response=$api->getCreateOrder(config("paypal-laravel.live_endpoint")."/v2/checkout/orders",$this->token,config("paypal-laravel.currency_code"),$amount);
+            $response=$api->getCreateOrder(config("paypal-laravel.live_endpoint")."/v2/checkout/orders",$this->token,$reference_id,config("paypal-laravel.currency_code"),$amount);
              }
     
              $order_id=json_decode($response)->id;
