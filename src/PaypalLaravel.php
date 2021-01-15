@@ -50,17 +50,17 @@ class PaypalLaravel
 
 
     public function CreatePayment($amount,$tax,$shipping,$handling_fee,$description){
-        $token=$this->getAccessToken();
+      $this->getAccessToken();
 
         if(config("paypal-laravel.environment")=="test"){
             $api=new PaypalUtil();
             
-            $response=$api->create_payment_util($token,config("paypal-laravel.sandbox_endpoint"),$amount,0,0,0,$description);
+            $response=$api->create_payment_util($this->token,config("paypal-laravel.sandbox_endpoint"),$amount,0,0,0,$description);
 
         }
            else{
             $api=new PaypalUtil();
-            $response=$api->create_payment_util($token,config("paypal-laravel.live_endpoint"),$amount,0,0,0,$description);
+            $response=$api->create_payment_util($this->token,config("paypal-laravel.live_endpoint"),$amount,0,0,0,$description);
 
              }
     
