@@ -74,7 +74,7 @@ curl_setopt_array($curl, array(
           "shipping_discount": "0"
         }
       },
-      "description": "'.$description.'",
+      "description": "'.$description.'"
      
     }
   ]
