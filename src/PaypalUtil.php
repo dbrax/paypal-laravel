@@ -38,6 +38,65 @@ return $response;
 }
 
 
+public function create_payment_util($token,$url,$amount,$shipping=0,$tax=0,$handling_fee=0,$description){
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "".$url,
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "POST",
+  CURLOPT_POSTFIELDS => '{
+  "intent": "sale",
+  "redirect_urls": {
+    "return_url": "'.config('paypal-laravel.return_url').'",
+    "cancel_url": "'.config('paypal-laravel.cancel_url').'"
+  },
+  "payer": {
+    "payment_method": "paypal"
+  },
+  "transactions": [
+    {
+      "amount": {
+        "total": "'.$amount.'",
+        "currency": "'.config('paypal-laravel.currency_code').'",
+        "details": {
+          "subtotal": "30.00",
+          "tax": "'.$tax.'",
+          "shipping": "'.$shipping.'",
+          "handling_fee": "'.$handling_fee.'",
+          "insurance": "0",
+          "shipping_discount": "0"
+        }
+      },
+      "description": "'.$description.'",
+     
+    }
+  ]
+}',
+  CURLOPT_HTTPHEADER => array(
+    'accept: application/json',
+    'accept-language: en_US',
+    'authorization: Bearer '.$token,
+    'content-type: application/json'
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+return $response;
+
+
+}
+
 public function generate_invoice(string $url,string $token){
   $curl = curl_init();
 

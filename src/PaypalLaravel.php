@@ -17,6 +17,8 @@ class PaypalLaravel
 
 
 
+
+
     public function getAccessToken(){
 
         // create authorization here...
@@ -39,6 +41,40 @@ class PaypalLaravel
 
         
     }
+
+    /**
+     * POST
+     * /v1/payments/payment/
+     * used to create payment
+     */
+
+
+    public function CreatePayment($amount,$tax,$shipping,$handling_fee,$description){
+        $token=$this->getAccessToken();
+
+        if(config("paypal-laravel.environment")=="test"){
+            $api=new PaypalUtil();
+            $response=$api->fetch_token(config("paypal-laravel.sandbox_endpoint"),$authorization);
+            
+            $response=$api->create_payment_util($token,config("paypal-laravel.sandbox_endpoint"),$amount,0,0,0,$description);
+
+        }
+           else{
+            $api=new PaypalUtil();
+            $response=$api->create_payment_util($token,config("paypal-laravel.live_endpoint"),$amount,0,0,0,$description);
+
+             }
+    
+
+             echo $response;
+
+             exit;
+             return $response;
+
+
+
+    }
+
 
   /**
    *  POST
