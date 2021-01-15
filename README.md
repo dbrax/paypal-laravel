@@ -12,8 +12,8 @@ This package is meant to help laravel developers to easily integrate their serve
 
 ## Installation
 
-- Laravel Version: => 7.*
-- PHP Version: => 7.*
+- Laravel Version: => 7.1
+- PHP Version: => 7.1
 
 You can install the package via composer:
 
