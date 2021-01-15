@@ -66,7 +66,7 @@ curl_setopt_array($curl, array(
         "total": "'.$amount.'",
         "currency": "'.config('paypal-laravel.currency_code').'",
         "details": {
-          "subtotal": "30.00",
+          "subtotal": "5.00",
           "tax": "'.$tax.'",
           "shipping": "'.$shipping.'",
           "handling_fee": "'.$handling_fee.'",
