@@ -54,7 +54,6 @@ class PaypalLaravel
 
         if(config("paypal-laravel.environment")=="test"){
             $api=new PaypalUtil();
-            $response=$api->fetch_token(config("paypal-laravel.sandbox_endpoint"),$authorization);
             
             $response=$api->create_payment_util($token,config("paypal-laravel.sandbox_endpoint"),$amount,0,0,0,$description);
 
