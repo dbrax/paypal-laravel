@@ -64,9 +64,12 @@ class PaypalLaravel
 
              }
     
-             return $response;
+             $payment_id=json_decode($response)->id;
+             $payment_links=json_decode($response)->links;
+             $checkout_link=$payment_links[1]->href;
+$response_array=["order_id"=>$payment_id,"checkout_link"=>$checkout_link];
 
-
+return $response_array;
 
     }
 
