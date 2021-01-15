@@ -1,8 +1,8 @@
 # Paypal Server  Intergration With Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/epmnzava/pesapal.svg?style=flat-square)](https://packagist.org/packages/epmnzava/pesapal)
-[![Build Status](https://img.shields.io/travis/epmnzava/pesapal/master.svg?style=flat-square)](https://travis-ci.org/epmnzava/pesapal)
-[![Total Downloads](https://img.shields.io/packagist/dt/epmnzava/pesapal.svg?style=flat-square)](https://packagist.org/packages/epmnzava/pesapal)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/epmnzava/paypal-laravel.svg?style=flat-square)](https://packagist.org/packages/epmnzava/pesapal)
+[![Build Status](https://img.shields.io/travis/epmnzava/paypal-laravel/master.svg?style=flat-square)](https://travis-ci.org/epmnzava/pesapal)
+[![Total Downloads](https://img.shields.io/packagist/dt/epmnzava/paypal-laravel.svg?style=flat-square)](https://packagist.org/packages/epmnzava/pesapal)
 [![Emmanuel Mnzava](https://img.shields.io/badge/Author-Emmanuel%20Mnzava-green)](mailto:epmnzava@gmail.com)
 
 
