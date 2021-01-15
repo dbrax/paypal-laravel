@@ -64,10 +64,6 @@ class PaypalLaravel
 
              }
     
-
-             echo $response;
-
-             exit;
              return $response;
 
 
