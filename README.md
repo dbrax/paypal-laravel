@@ -9,6 +9,8 @@
 This package is meant to help laravel developers to easily integrate their server side web application or web service with pa
 [Paypal ] (https://developer.paypal.com/docs/archive/checkout/how-to/server-integration/)
 
+![alt text](https://github.com/dbrax/paypal-laravel/blob/main/src/assets/paypal_server.png)
+
 
 ## Installation
 
