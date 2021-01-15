@@ -51,7 +51,6 @@ PAYPAL_CANCEL_URL    ` your  cancel url `<br/>
 
 PAYPAL_ENVIRONMENT  ` your  environment either test or production  `<br/>
 
-
 PAYPAL_CURRENCY_CODE ` currency put TZS for Tanzanian Shillings `<br/>
 
 PAYPAL_ORG_NAME `your organization name`<br/>
