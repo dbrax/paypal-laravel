@@ -44,7 +44,7 @@ public function create_payment_util($token,$url,$amount,$shipping=0,$tax=0,$hand
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "".$url,
+  CURLOPT_URL => "".$url."/v1/payments/payment",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
