@@ -45,9 +45,6 @@ PAYPAL_CLIENT_ID ` your provided paypal client id  `<br/>
 
 PAYPAL_CLIENT_SECRET ` your provided paypal client secret `<br/>
 
-PESAPAL_API_URL ` your provided pesapal api url live: www.pesapal.com Test demo.pesapal.com  `<br/>
-
-
 PAYPAL_REDIRECT_URL    ` your  redirect url `<br/>
 
 PAYPAL_CANCEL_URL    ` your  cancel url `<br/>
