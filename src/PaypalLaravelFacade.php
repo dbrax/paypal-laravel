@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Author: Emmanuel Paul Mnzava
+ * Twitter: @epmnzava
+ * Email: epmnzava@gmail.com
+ * Github:https://github.com/dbrax/paypal-laravel
+ * 
+ */
+
 namespace Epmnzava\PaypalLaravel;
 
 use Illuminate\Support\Facades\Facade;

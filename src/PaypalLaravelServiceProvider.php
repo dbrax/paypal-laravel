@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Author: Emmanuel Paul Mnzava
+ * Twitter: @epmnzava
+ * Email: epmnzava@gmail.com
+ * Github:https://github.com/dbrax/paypal-laravel
+ * 
+ */
+
 namespace Epmnzava\PaypalLaravel;
 
 use Illuminate\Support\ServiceProvider;
@@ -21,7 +29,7 @@ class PaypalLaravelServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('paypal-laravel.php'),
+                __DIR__ . '/../config/config.php' => config_path('paypal-laravel.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,7 +58,7 @@ class PaypalLaravelServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'paypal-laravel');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'paypal-laravel');
 
         // Register the main class to use with the facade
         $this->app->singleton('paypal-laravel', function () {
