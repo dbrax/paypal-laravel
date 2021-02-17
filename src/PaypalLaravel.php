@@ -49,11 +49,11 @@ class PaypalLaravel
     /**
      * POST
      * /v1/payments/payment/
-     * used to create payment
+     * used to setup payment with paypal and will return payment id this id can be saved on your billing or payment history table
      */
 
 
-    public function CreatePayment($amount, $tax, $shipping, $handling_fee, $description)
+    public function CreatePayment(int $amount, $tax, $shipping, $handling_fee, $description)
     {
         $this->getAccessToken();
 
@@ -66,14 +66,47 @@ class PaypalLaravel
             $response = $api->create_payment_util($this->token, config("paypal-laravel.live_endpoint"), $amount, 0, 0, 0, $description);
         }
 
+        echo json_encode($response);
+
+        exit;
+
         $payment_id = json_decode($response)->id;
         $payment_links = json_decode($response)->links;
         $checkout_link = $payment_links[1]->href;
-        $response_array = ["order_id" => $payment_id, "checkout_link" => $checkout_link];
+
+        //remember to save payment_id once it returns 
+        //add validations here to check if payment_id is available
+        $response_array = ["payment_id" => $payment_id, "checkout_link" => $checkout_link];
 
         return $response_array;
     }
 
+
+   /**
+   * /v1/payments/payment/PAY-XXX/execute
+   */
+    public function executePayment($paymentid,$PayeID){
+
+    $this->getAccessToken();
+
+        if (config("paypal-laravel.environment") == "test") {
+            $api = new PaypalUtil();
+
+            $url=config("paypal-laravel.sandbox_endpoint")."/v1/payments/payment/".$PayeID."/execute";
+
+
+            $response = $api->executepayment($this->token, $url);
+        } else {
+
+            $api = new PaypalUtil();
+
+            $url=config("paypal-laravel.live_endpoint")."/v1/payments/payment/".$PayeID."/execute";
+
+            $response = $api->executepayment($this->token, $url);
+        }
+
+
+    }
 
     /**
      *  POST
