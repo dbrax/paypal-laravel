@@ -66,9 +66,7 @@ class PaypalLaravel
             $response = $api->create_payment_util($this->token, config("paypal-laravel.live_endpoint"), $amount, 0, 0, 0, $description);
         }
 
-        echo json_encode($response);
-
-        exit;
+      
 
         $payment_id = json_decode($response)->id;
         $payment_links = json_decode($response)->links;
