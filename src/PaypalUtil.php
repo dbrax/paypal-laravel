@@ -50,7 +50,7 @@ class PaypalUtil
   }
 
 
-  public function executepayment($token,$url){
+  public function executepayment($token,$url,$payer_id){
 
 
 
@@ -65,7 +65,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => '{
-  "payer_id": "'.$paymentid.'"
+  "payer_id": "'.$payer_id.'"
 }',
   CURLOPT_HTTPHEADER => array(
     'accept: application/json',

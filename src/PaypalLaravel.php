@@ -66,7 +66,7 @@ class PaypalLaravel
             $response = $api->create_payment_util($this->token, config("paypal-laravel.live_endpoint"), $amount, 0, 0, 0, $description);
         }
 
-      
+
 
         $payment_id = json_decode($response)->id;
         $payment_links = json_decode($response)->links;
@@ -83,7 +83,7 @@ class PaypalLaravel
    /**
    * /v1/payments/payment/PAY-XXX/execute
    */
-    public function executePayment($paymentid,$PayeID){
+    public function executePayment($paymentid,$PayeID,$payer_id){
 
     $this->getAccessToken();
 
@@ -93,15 +93,18 @@ class PaypalLaravel
             $url=config("paypal-laravel.sandbox_endpoint")."/v1/payments/payment/".$PayeID."/execute";
 
 
-            $response = $api->executepayment($this->token, $url);
+            $response = $api->executepayment($this->token, $url,$payer_id);
         } else {
 
             $api = new PaypalUtil();
 
             $url=config("paypal-laravel.live_endpoint")."/v1/payments/payment/".$PayeID."/execute";
 
-            $response = $api->executepayment($this->token, $url);
+            $response = $api->executepayment($this->token, $url,$payer_id);
         }
+
+
+        return $response;
 
 
     }
