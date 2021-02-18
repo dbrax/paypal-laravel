@@ -53,7 +53,6 @@ class PaypalUtil
   public function executepayment($token,$url,$payer_id){
 
 
-
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -65,13 +64,13 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => '{
-  "payer_id": "'.$payer_id.'"
+  "payer_id": "' . $payer_id . '"
 }',
   CURLOPT_HTTPHEADER => array(
-    'accept: application/json',
-    'accept-language: en_US',
-    'authorization: '.$token,
-    'content-type: application/json'
+   'accept: application/json',
+   'accept-language: en_US',
+   'authorization: Bearer '.$token,
+   'content-type: application/json'
   ),
 ));
 
@@ -82,13 +81,11 @@ curl_close($curl);
 
 if ($err) {
   echo "cURL Error #:" . $err;
-} 
+} else {
+  echo $response;
+}
 
 return $response;
-
-
-
-
 
 
   }

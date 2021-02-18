@@ -83,7 +83,7 @@ class PaypalLaravel
    /**
    * /v1/payments/payment/PAY-XXX/execute
    */
-    public function executePayment($paymentid,$PayeID,$payer_id){
+    public function executePayment($PayeID,$payer_id){
 
     $this->getAccessToken();
 
