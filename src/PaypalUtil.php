@@ -82,7 +82,7 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  echo $response;
+ // echo $response;
 }
 
 return $response;
