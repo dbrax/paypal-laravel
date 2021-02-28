@@ -148,3 +148,8 @@ If you discover any security related issues, please email epmnzava@gmail.com ins
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+# Any questions or comments hit me up on
+
+Mail: epmnzava@gmail.com
+Twitter: https://twitter.com/epmnzava
+Github: https://github.com/dbrax

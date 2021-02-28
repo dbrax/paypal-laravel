@@ -14,8 +14,13 @@ This package is meant to help laravel developers to easily integrate their serve
 
 ## Installation
 
-- Laravel Version: => 7.1
-- PHP Version: => 7.1
+## Version Matrix
+
+Version | Laravel   | PHP Version
+------- | --------- | ------------
+1.5     | 8.0       | >= 8.0
+1.3     | 8.0       | >= 7.3
+1.2     | 7.0       | >= 7.2.5
 
 You can install the package via composer:
 
@@ -63,30 +68,55 @@ PAYPAL_ORG_NAME `your organization name`<br/>
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Paypal;
+use Epmnzava\PaypalLaravel\PaypalLaravel as Paypal;
 class TestController extends Controller
 {
     
 
 
 
-    public function simplepay_by_paypal(){
+    public function payments(){
 
 
 
-$response=Paypal::CreatePayment("5","0","0","1","Payment for basket ball");
+$paypal_payments=new paypal;      
+$response=$paypal_payments->CreatePayment(int $amount, $tax, $shipping, $handling_fee, $description);
+
+// You will need the order_id to reference the transaction hence save it from here.
+$payment_id=$response["order_id"]; 
 
 
-    $payment_id=$response["order_id"];
-
-
-
+//the checkout link will lead the user  you to paypal  where he/she can approve the payment.
 return redirect($response["checkout_link"]);
+    }
+
+
+```
+# After payment approval the user will be redirected back to your application on  PAYPAL_REDIRECT_URL which you have set on your .env
+
+``` php
+
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Epmnzava\PaypalLaravel\PaypalLaravel as Paypal;
+class TestController extends Controller
+{
+    
+
+
+    public function paypal_redirect(Request $request){
+      $paypal=new Paypal;
+
+      // This will execute the approved payment notice that the redirected url comes back with PayerID which we reuse it
+      $response=$paypal->executePayment($request->paymentId,$request->PayerID);
+
+      if(json_decode($response)->state=="approved"){
+// update your database and share the success message to the user.
+      }
 
 
 
-
-
+    }
 
 
 ```
@@ -118,3 +148,8 @@ If you discover any security related issues, please email epmnzava@gmail.com ins
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+# Any questions or comments hit me up on
+
+Mail: epmnzava@gmail.com
+Twitter: https://twitter.com/epmnzava
+Github: https://github.com/dbrax
