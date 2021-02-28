@@ -65,7 +65,7 @@ PAYPAL_ORG_NAME `your organization name`<br/>
 ## Usage
 
 ``` php
-
+<?php>
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Epmnzava\PaypalLaravel\PaypalLaravel as Paypal;
@@ -75,8 +75,7 @@ class TestController extends Controller
 
 
 
-    public function payments(){
-
+public function payments(Request $request){
 
 
 $paypal_payments=new paypal;      
@@ -92,10 +91,10 @@ return redirect($response["checkout_link"]);
 
 
 ```
-# After payment approval the user will be redirected back to your application on  PAYPAL_REDIRECT_URL which you have set on your .env
+## After payment approval the user will be redirected back to your application on  PAYPAL_REDIRECT_URL which you have set on your .env
 
 ``` php
-
+<?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Epmnzava\PaypalLaravel\PaypalLaravel as Paypal;
@@ -148,7 +147,7 @@ If you discover any security related issues, please email epmnzava@gmail.com ins
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-# Any questions or comments hit me up on
+## Any questions or comments hit me up on
 
 Mail: epmnzava@gmail.com
 Twitter: https://twitter.com/epmnzava
