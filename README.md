@@ -92,7 +92,7 @@ return redirect($response["checkout_link"]);
 
 
 ```
-# After payment approval the user will be redirected back to your application on  PAYPAL_REDIRECT_URL which you have set on your .env
+## After payment approval the user will be redirected back to your application on  PAYPAL_REDIRECT_URL which you have set on your .env
 
 ``` php
 
@@ -148,7 +148,7 @@ If you discover any security related issues, please email epmnzava@gmail.com ins
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-# Any questions or comments hit me up on
+## Any questions or comments hit me up on
 
 Mail: epmnzava@gmail.com
 Twitter: https://twitter.com/epmnzava
