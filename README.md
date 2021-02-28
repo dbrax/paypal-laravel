@@ -149,6 +149,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ## Any questions or comments hit me up on
 
-- [Mail](https://mailto:epmnzava@gmail.com)  epmnzava@gmail.com
+- [Mail](https://mailto:epmnzava@gmail.com)   epmnzava@gmail.com
 - [Twitter](https://twitter.com/epmnzava) https://twitter.com/epmnzava
 - [Github](https://github.com/dbrax) https://github.com/dbrax
