@@ -10,12 +10,12 @@
     "type": "library",
     "authors": [
         {
-            "name": "Emmanuel Mnzava",
+            "name": "Emmanuel Paul Mnzava",
             "email": "epmnzava@gmail.com",
             "role": "Developer"
         }
     ],
-    
+
     "autoload": {
         "psr-4": {
             "Epmnzava\\PaypalLaravel\\": "src"

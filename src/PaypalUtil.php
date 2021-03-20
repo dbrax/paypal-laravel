@@ -5,7 +5,7 @@
  * Twitter: @epmnzava
  * Email: epmnzava@gmail.com
  * Github:https://github.com/dbrax/paypal-laravel
- * 
+ *
  */
 
 namespace Epmnzava\PaypalLaravel;
@@ -16,9 +16,12 @@ class PaypalUtil
 {
 
 
-  /**
-   * This function makes a curl request to fetch token
-   */
+    /**
+     * @param string $url
+     * @param string $authorization
+     * @return bool|string
+     * This function makes a curl request to fetch token
+     */
   public function fetch_token(string $url, string $authorization)
   {
     $curl = curl_init();
@@ -50,6 +53,14 @@ class PaypalUtil
   }
 
 
+    /**
+     * @param $token
+     * @param $url
+     * @param $payer_id
+     * @return bool|string
+     *
+     * Function used to execute payments
+     */
   public function executepayment($token,$url,$payer_id){
 
 
@@ -90,9 +101,18 @@ return $response;
 
   }
 
-  /**
-   * This function makes a call to paypal's payment endpoint
-   */
+
+    /**
+     * @param $token
+     * @param $url
+     * @param $amount
+     * @param int $shipping
+     * @param int $tax
+     * @param int $handling_fee
+     * @param $description
+     * @return bool|string
+     * This function makes a call to paypal's payment endpoint
+     */
   public function create_payment_util($token, $url, $amount, $shipping = 0, $tax = 0, $handling_fee = 0, $description)
   {
 
@@ -131,7 +151,7 @@ return $response;
         }
       },
       "description": "' . $description . '"
-     
+
     }
   ]
 }',
@@ -183,6 +203,15 @@ return $response;
     return $response;
   }
 
+    /**
+     * @param $url
+     * @param $token
+     * @param $reference_id
+     * @param $currency_code
+     * @param $amount
+     * @return bool|string
+     *
+     */
   public function getCreateOrder($url, $token, $reference_id, $currency_code, $amount)
   {
     $ch = curl_init();
@@ -207,6 +236,12 @@ return $response;
   }
 
 
+    /**
+     * @param $url
+     * @param $token
+     * @return bool|string
+     *
+     */
   public function getFromPaypal($url, $token)
   {
 

@@ -5,7 +5,7 @@
  * Twitter: @epmnzava
  * Email: epmnzava@gmail.com
  * Github:https://github.com/dbrax/paypal-laravel
- * 
+ *
  */
 
 namespace Epmnzava\PaypalLaravel;
@@ -47,13 +47,18 @@ class PaypalLaravel
     }
 
     /**
-     * POST
+     * @param int $amount
+     * @param $tax
+     * @param $shipping
+     * @param $handling_fee
+     * @param $description
+     * @return array
+     *
      * /v1/payments/payment/
      * used to setup payment with paypal and will return payment id this id can be saved on your billing or payment history table
+     *
      */
-
-
-    public function CreatePayment(int $amount, $tax, $shipping, $handling_fee, $description)
+    public function CreatePayment(int $amount, $tax, $shipping, $handling_fee, $description) : Array
     {
         $this->getAccessToken();
 
@@ -72,7 +77,7 @@ class PaypalLaravel
         $payment_links = json_decode($response)->links;
         $checkout_link = $payment_links[1]->href;
 
-        //remember to save payment_id once it returns 
+        //remember to save payment_id once it returns
         //add validations here to check if payment_id is available
         $response_array = ["payment_id" => $payment_id, "checkout_link" => $checkout_link];
 
@@ -80,9 +85,14 @@ class PaypalLaravel
     }
 
 
-   /**
-   * /v1/payments/payment/PAY-XXX/execute
-   */
+
+    /**
+     * @param $PayeID
+     * @param $payer_id
+     * @return bool|string
+     *
+     * /v1/payments/payment/PAY-XXX/execute
+     */
     public function executePayment($PayeID,$payer_id){
 
     $this->getAccessToken();
@@ -140,7 +150,6 @@ class PaypalLaravel
      * /v2/invoicing/invoices
      */
 
-
     public function listInvoices()
     {
         $this->getAccessToken();
@@ -161,10 +170,14 @@ class PaypalLaravel
     }
 
 
+
     /**
-     * POST 
+     * @param $reference_id
+     * @param $amount
+     * @param array $items
+     * @return array
      *
-     *  /v2/checkout/orders 
+     * Function to create an order  /v2/checkout/orders
      */
 
     public function createOrder($reference_id, $amount, $items = [])
@@ -190,22 +203,7 @@ class PaypalLaravel
         $response_array = ["order_id" => $order_id, "checkout_link" => $checkout_link];
         return $response_array;
 
-        /// $this->readLink(json_decode($response)->links[0]);
-
 
     }
 
-
-    // public function readLink($link)
-    // {
-    //     $this->getAccessToken();
-
-    //     $response = null;
-
-
-    //     $api = new PaypalUtil();
-    //     $response = $api->getFromPaypal($link, $this->token);
-
-    //     echo $response;
-    // }
 }
