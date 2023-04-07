@@ -58,7 +58,7 @@ class PaypalLaravel
      * used to setup payment with paypal and will return payment id this id can be saved on your billing or payment history table
      *
      */
-    public function CreatePayment(int $amount, $tax, $shipping, $handling_fee, $description) : Array
+    public function CreatePayment($amount, $tax, $shipping, $handling_fee, $description) : Array
     {
         $this->getAccessToken();
 
